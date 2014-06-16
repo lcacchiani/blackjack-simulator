@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<blackjack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../schema/1.0/blackjack.xsd"
+	version="1.0" xsi:type="standard-blackjack-game">
+	<tables>
+		<table xsi:type="vegas-table">
+			<name>Excess</name>
+			<min-bet>10</min-bet>
+			<max-bet>1000</max-bet>
+			<deck xsi:type="standard-deck">
+				<seed>1234</seed>
+				<deck-no>8</deck-no>
+			</deck>
+			<dealer xsi:type="simple-dealer">
+				<name>Bastard</name>
+				<dealer-game-strategy xsi:type="default-dealer-game-strategy" />
+			</dealer>
+			<player xsi:type="simple-player">
+				<name>Luca</name>
+				<player-game-strategy xsi:type="default-player-game-strategy-v2" />
+				<betting-strategy xsi:type="default-betting-strategy" />
+				<insurance-strategy xsi:type="never-insurance" />
+				<balance>100</balance>
+			</player>
+			<player xsi:type="simple-player">
+				<name>Satan</name>
+				<player-game-strategy xsi:type="default-player-game-strategy" />
+				<betting-strategy xsi:type="default-betting-strategy" />
+				<insurance-strategy xsi:type="never-insurance" />
+				<balance>100</balance>
+			</player>
+			<player xsi:type="simple-player">
+				<name>Evil</name>
+				<player-game-strategy xsi:type="default-player-game-strategy" />
+				<betting-strategy xsi:type="default-betting-strategy" />
+				<insurance-strategy xsi:type="never-insurance" />
+				<balance>100</balance>
+			</player>
+			<player xsi:type="simple-player">
+				<name>Belzebu</name>
+				<player-game-strategy xsi:type="default-player-game-strategy" />
+				<betting-strategy xsi:type="default-betting-strategy" />
+				<insurance-strategy xsi:type="never-insurance" />
+				<balance>100</balance>
+			</player>
+			<player xsi:type="simple-player">
+				<name>Jezebel</name>
+				<player-game-strategy xsi:type="default-player-game-strategy" />
+				<betting-strategy xsi:type="default-betting-strategy" />
+				<insurance-strategy xsi:type="never-insurance" />
+				<balance>100</balance>
+			</player>
+			<player xsi:type="simple-player">
+				<name>Lucifer</name>
+				<player-game-strategy xsi:type="default-player-game-strategy" />
+				<betting-strategy xsi:type="default-betting-strategy" />
+				<insurance-strategy xsi:type="never-insurance" />
+				<balance>100</balance>
+			</player>
+			<player xsi:type="simple-player">
+				<name>Mammon</name>
+				<player-game-strategy xsi:type="default-player-game-strategy" />
+				<betting-strategy xsi:type="default-betting-strategy" />
+				<insurance-strategy xsi:type="never-insurance" />
+				<balance>100</balance>
+			</player>
+			<rules xsi:type="standard-rules">
+				<soft-17>false</soft-17>
+				<early-surrender>false</early-surrender>
+				<resplit>-1</resplit>
+				<resplit-split-aces>false</resplit-split-aces>
+				<hit-split-aces>false</hit-split-aces>
+				<double-split-aces>false</double-split-aces>
+				<no-double-after-split>false</no-double-after-split>
+				<reno-rule>false</reno-rule>
+				<reno-rule-european>false</reno-rule-european>
+				<no-hole-card>false</no-hole-card>
+				<obo>false</obo>
+				<blackjack-payout>3:2</blackjack-payout>
+				<dealer-win-ties>false</dealer-win-ties>
+				<win-payout>2:1</win-payout>
+			</rules>
+		</table>
+	</tables>
+</blackjack>

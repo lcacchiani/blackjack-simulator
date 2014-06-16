@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:complexType name="standard-deck">
+		<xs:complexContent>
+			<xs:extension base="deck" />
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="deck">
+		<xs:sequence>
+			<xs:element name="seed" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer" />
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="deck-no" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="1" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="never-insurance">
+		<xs:complexContent>
+			<xs:extension base="insurance-strategy" />
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="always-insurance">
+		<xs:complexContent>
+			<xs:extension base="insurance-strategy" />
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="insurance-strategy" />
+
+	<xs:complexType name="default-betting-strategy">
+		<xs:complexContent>
+			<xs:extension base="betting-strategy" />
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="betting-strategy" />
+
+	<xs:complexType name="simple-player">
+		<xs:complexContent>
+			<xs:extension base="player" />
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="simple-strategy">
+		<xs:complexContent>
+			<xs:extension base="player-game-strategy" />
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="default-player-game-strategy-v2">
+		<xs:complexContent>
+			<xs:extension base="player-game-strategy" />
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="default-player-game-strategy">
+		<xs:complexContent>
+			<xs:extension base="player-game-strategy" />
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="player-game-strategy">
+		<xs:complexContent>
+			<xs:extension base="game-strategy" />
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="player">
+		<xs:complexContent>
+			<xs:extension base="user">
+				<xs:sequence>
+					<xs:element name="player-game-strategy" minOccurs="1" maxOccurs="1" type="game-strategy" />
+					<xs:element name="betting-strategy" minOccurs="1" maxOccurs="1" type="betting-strategy" />
+					<xs:element name="insurance-strategy" minOccurs="1" maxOccurs="1" type="insurance-strategy" />
+					<xs:element name="balance" minOccurs="1" maxOccurs="1">
+						<xs:simpleType>
+							<xs:restriction base="xs:decimal">
+								<xs:minExclusive value="0" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="simple-dealer">
+		<xs:complexContent>
+			<xs:extension base="dealer" />
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="default-dealer-game-strategy">
+		<xs:complexContent>
+			<xs:extension base="dealer-game-strategy" />
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="dealer-game-strategy">
+		<xs:complexContent>
+			<xs:extension base="game-strategy" />
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="game-strategy" />
+
+	<xs:complexType name="dealer">
+		<xs:complexContent>
+			<xs:extension base="user">
+				<xs:sequence>
+					<xs:element name="dealer-game-strategy" minOccurs="1" maxOccurs="1" type="game-strategy" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="user">
+		<xs:sequence>
+			<xs:element name="name" minOccurs="1" maxOccurs="1" type="bj-string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="standard-rules">
+		<xs:complexContent>
+			<xs:extension base="rules" />
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="rules">
+		<xs:sequence>
+			<xs:element name="soft-17" minOccurs="1" maxOccurs="1" type="xs:boolean" />
+			<xs:element name="early-surrender" minOccurs="1" maxOccurs="1" type="xs:boolean" />
+			<xs:element name="resplit" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="-1" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="resplit-split-aces" minOccurs="1" maxOccurs="1" type="xs:boolean" />
+			<xs:element name="hit-split-aces" minOccurs="1" maxOccurs="1" type="xs:boolean" />
+			<xs:element name="double-split-aces" minOccurs="1" maxOccurs="1" type="xs:boolean" />
+			<xs:element name="no-double-after-split" minOccurs="1" maxOccurs="1" type="xs:boolean" />
+			<xs:element name="reno-rule" minOccurs="1" maxOccurs="1" type="xs:boolean" />
+			<xs:element name="reno-rule-european" minOccurs="1" maxOccurs="1" type="xs:boolean" />
+			<xs:element name="no-hole-card" minOccurs="1" maxOccurs="1" type="xs:boolean" />
+			<xs:element name="obo" minOccurs="1" maxOccurs="1" type="xs:boolean" />
+			<xs:element name="blackjack-payout" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:pattern value="[0-9]+:[0-9]+" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="dealer-win-ties" minOccurs="1" maxOccurs="1" type="xs:boolean" />
+			<xs:element name="win-payout" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:pattern value="[0-9]+:[0-9]+" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="table">
+		<xs:sequence>
+			<xs:element name="name" minOccurs="1" maxOccurs="1" type="bj-string" />
+			<xs:element name="min-bet" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minExclusive value="0" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="max-bet" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minExclusive value="0" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="deck" minOccurs="1" maxOccurs="1" type="deck" />
+			<xs:element name="dealer" minOccurs="1" maxOccurs="1" type="dealer" />
+			<xs:element name="player" minOccurs="5" maxOccurs="unbounded" type="player" />
+			<xs:element name="rules" minOccurs="1" maxOccurs="1" type="rules" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="vegas-table">
+		<xs:complexContent>
+			<xs:extension base="table" />
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="blackjack">
+		<xs:sequence>
+			<xs:element name="tables" minOccurs="1" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="table" minOccurs="1" maxOccurs="unbounded" type="table" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="version" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:decimal">
+					<xs:minInclusive value="1.0" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="standard-blackjack-game">
+		<xs:complexContent>
+			<xs:extension base="blackjack" />
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:element name="blackjack" type="blackjack" />
+
+	<xs:simpleType name="bj-string">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="256" />
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

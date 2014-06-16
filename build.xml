@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="blackjack" default="compile">
+
+	<dirname property="blackjack.basedir" file="${ant.file.blackjack}" />
+
+	<property file="${blackjack.basedir}/build.properties" />
+
+	<path id="classpath.compile">
+		<fileset dir="${spring.home}">
+			<include name="org.springframework.aop-3.1.0.RC1.jar" />
+			<include name="org.springframework.asm-3.1.0.RC1.jar" />
+			<include name="org.springframework.beans-3.1.0.RC1.jar" />
+			<include name="org.springframework.context-3.1.0.RC1.jar" />
+			<include name="org.springframework.core-3.1.0.RC1.jar" />
+			<include name="org.springframework.expression-3.1.0.RC1.jar" />
+			<include name="org.springframework.transaction-3.1.0.RC1.jar" />
+		</fileset>
+		<fileset dir="${spring-dependencies.home}">
+			<include name="com.springsource.org.aopalliance-1.0.0.jar" />
+			<include name="commons-logging-1.1.3.jar" />
+		</fileset>
+		<fileset dir="${aspectj.home}">
+			<include name="aspectjrt-1.7.4.jar" />
+		</fileset>
+		<fileset dir="${log4j.home}">
+			<include name="log4j-1.2.17.jar" />
+		</fileset>
+	</path>
+
+	<path id="classpath.run">
+		<pathelement location="${blackjack.basedir}" />
+		<pathelement location="${blackjack.basedir}/bin" />
+	</path>
+
+	<path id="classpath.config">
+		<pathelement location="${blackjack.basedir}/config" />
+	</path>
+
+	<target name="clean">
+		<delete dir="bin" />
+	</target>
+
+	<target name="init">
+		<tstamp>
+			<format property="build.timestamp" pattern="yyyyMMddHHmmssSSS" />
+		</tstamp>
+		<condition property="unsuitable-jdk-version">
+			<not>
+				<equals arg1="${java.specification.version}" arg2="1.7" />
+			</not>
+		</condition>
+		<fail if="unsuitable-jdk-version">Unsuitable JDK: this version = ${java.specification.version}, required version = 1.7</fail>
+	</target>
+
+	<target name="define-aspectj-tasks" depends="init">
+		<taskdef resource="org/aspectj/tools/ant/taskdefs/aspectjTaskdefs.properties">
+			<classpath>
+				<pathelement location="${aspectj.home}/aspectjtools-1.7.4.jar" />
+			</classpath>
+		</taskdef>
+	</target>
+
+	<target name="compile" depends="clean, define-aspectj-tasks, init">
+		<mkdir dir="${blackjack.basedir}/bin" />
+		<iajc encoding="UTF-8" destdir="${blackjack.basedir}/bin" source="1.6" target="1.6" debug="true" debuglevel="lines,source" fork="true" maxmem="128m">
+			<classpath refid="classpath.compile" />
+			<sourceroots location="${blackjack.basedir}/src" />
+		</iajc>
+		<copy todir="${blackjack.basedir}/bin">
+			<fileset dir="${blackjack.basedir}/src">
+				<exclude name="**/*.java" />
+				<exclude name="**/*.aj" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="javadoc">
+		<delete dir="${blackjack.basedir}/javadoc" />
+		<mkdir dir="${blackjack.basedir}/javadoc" />
+		<javadoc destdir="${blackjack.basedir}/javadoc" access="public" useexternalfile="true">
+			<fileset dir="${blackjack.basedir}/src">
+				<include name="**/*.java" />
+			</fileset>
+			<classpath refid="classpath.compile" />
+		</javadoc>
+		<zip destfile="${blackjack.basedir}/blackjack-javadoc.zip" basedir="${blackjack.basedir}/javadoc" />
+	</target>
+
+	<target name="zip" depends="init">
+		<mkdir dir="${blackjack.basedir}/builds" />
+		<zip destfile="${blackjack.basedir}/builds/blackjack-${build.timestamp}.zip">
+			<fileset dir="${blackjack.basedir}">
+				<exclude name="bin/**" />
+			</fileset>
+		</zip>
+	</target>
+
+	<target name="run">
+		<java classname="com.luca.blackjack.Engine" fork="true">
+			<classpath refid="classpath.compile" />
+			<classpath refid="classpath.run" />
+			<classpath refid="classpath.config" />
+		</java>
+	</target>
+
+</project>

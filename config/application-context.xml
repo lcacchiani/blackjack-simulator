@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<aop:aspectj-autoproxy />
+
+	<bean id="bulkImportBean" class="com.luca.blackjack.data.BulkImportBeanImpl">
+		<property name="importerMap">
+			<map>
+				<entry key="1.0" value-ref="blackjackImporter10" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="blackjackImporter10" class="com.luca.blackjack.data.BlackjackImporter10">
+		<property name="records">
+			<map>
+				<entry key="standardBlackjackGame" value-ref="standardBlackjackGame" />
+				<entry key="vegasTable" value-ref="vegasTable" />
+				<entry key="standardDeck" value-ref="standardDeck" />
+				<entry key="simplePlayer" value-ref="simplePlayer" />
+				<entry key="simpleDealer" value-ref="simpleDealer" />
+				<entry key="standardRules" value-ref="standardRules" />
+				<entry key="defaultDealerGameStrategy" value-ref="defaultDealerGameStrategy" />
+				<entry key="defaultPlayerGameStrategy" value-ref="defaultPlayerGameStrategy" />
+				<entry key="defaultPlayerGameStrategyV2" value-ref="defaultPlayerGameStrategyV2" />
+				<entry key="simpleStrategy" value-ref="simpleStrategy" />
+				<entry key="defaultBettingStrategy" value-ref="defaultBettingStrategy" />
+				<entry key="alwaysInsurance" value-ref="alwaysInsurance" />
+				<entry key="neverInsurance" value-ref="neverInsurance" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- list of java beans used in the JAXB context. Bean properties won't be loaded -->
+
+	<bean id="standardBlackjackGame" class="com.luca.blackjack.StandardBlackjackGame" lazy-init="true" />
+
+	<bean id="vegasTable" class="com.luca.blackjack.game.VegasTable" lazy-init="true" />
+
+	<bean id="standardDeck" class="com.luca.blackjack.card.StandardDeck" lazy-init="true" />
+
+	<bean id="simplePlayer" class="com.luca.blackjack.user.SimplePlayer" lazy-init="true" />
+	<bean id="simpleDealer" class="com.luca.blackjack.user.SimpleDealer" lazy-init="true" />
+
+	<bean id="standardRules" class="com.luca.blackjack.game.StandardRules" lazy-init="true" />
+
+	<bean id="defaultBettingStrategy" class="com.luca.blackjack.strategy.betting.DefaultBettingStrategy" lazy-init="true" />
+
+	<bean id="defaultDealerGameStrategy" class="com.luca.blackjack.strategy.game.DefaultDealerGameStrategy" lazy-init="true" />
+	<bean id="defaultPlayerGameStrategy" class="com.luca.blackjack.strategy.game.DefaultPlayerGameStrategy" lazy-init="true" />
+	<bean id="defaultPlayerGameStrategyV2" class="com.luca.blackjack.strategy.game.DefaultPlayerGameStrategyV2" lazy-init="true" />
+	<bean id="simpleStrategy" class="com.luca.blackjack.strategy.game.SimpleStrategy" lazy-init="true" />
+
+	<bean id="alwaysInsurance" class="com.luca.blackjack.strategy.insurance.AlwaysInsurance" lazy-init="true" />
+	<bean id="neverInsurance" class="com.luca.blackjack.strategy.insurance.NeverInsurance" lazy-init="true" />
+
+	<bean id="report" class="com.luca.blackjack.report.StandardReport" lazy-init="true" scope="prototype" />
+	<bean id="record" class="com.luca.blackjack.report.BasicRecord" lazy-init="true" scope="prototype" />
+	<bean id="playerReport" class="com.luca.blackjack.report.BasicPlayerReport" lazy-init="true" scope="prototype" />
+
+</beans>

@@ -1,0 +1,104 @@
+<class-diagram version="1.0.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <interface id="11" corner="BOTTOM_RIGHT" language="java" name="com.luca.blackjack.card.Hand" project="blackjack" 
+    file="/blackjack/src/com/luca/blackjack/card/Hand.java" binary="false">    
+    <position x="95" y="161" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface id="13" corner="BOTTOM_RIGHT" language="java" name="com.luca.blackjack.card.ComplexHand" 
+    project="blackjack" file="/blackjack/src/com/luca/blackjack/card/ComplexHand.java" binary="false">    
+    <position x="579" y="161" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class id="14" corner="BOTTOM_RIGHT" language="java" name="com.luca.blackjack.card.DealerHand" project="blackjack" 
+    file="/blackjack/src/com/luca/blackjack/card/DealerHand.java" binary="false">    
+    <position x="96" y="623" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="15" corner="BOTTOM_RIGHT" language="java" name="com.luca.blackjack.card.PlayerHand" project="blackjack" 
+    file="/blackjack/src/com/luca/blackjack/card/PlayerHand.java" binary="false">    
+    <position x="586" y="624" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="16" corner="BOTTOM_RIGHT" language="java" name="com.luca.blackjack.card.HandUtils.Status" 
+    project="blackjack" file="/blackjack/src/com/luca/blackjack/card/HandUtils.java" binary="false">    
+    <position x="310" y="344" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="17" corner="BOTTOM_RIGHT" language="java" name="com.luca.blackjack.card.HandUtils" project="blackjack" 
+    file="/blackjack/src/com/luca/blackjack/card/HandUtils.java" binary="false">    
+    <position x="319" y="623" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <realization>    
+    <end type="SOURCE" nodeId="15"/>    
+    <end type="TARGET" nodeId="13"/>  
+  </realization>  
+  <realization>    
+    <end type="SOURCE" nodeId="14"/>    
+    <end type="TARGET" nodeId="11"/>  
+  </realization>  
+  <association>    
+    <end type="SOURCE" nodeId="15" navigable="false">      
+      <attribute name="childB"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" nodeId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association>    
+    <end type="SOURCE" nodeId="15" navigable="false">      
+      <attribute name="childA"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" nodeId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association>    
+    <end type="SOURCE" nodeId="17" navigable="false">      
+      <attribute name="status"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" nodeId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting>    
+    <end type="SOURCE" nodeId="17"/>    
+    <end type="TARGET" nodeId="16"/>  
+  </nesting>  
+  <generalization>    
+    <end type="SOURCE" nodeId="14"/>    
+    <end type="TARGET" nodeId="17"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="13"/>    
+    <end type="TARGET" nodeId="11"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="15"/>    
+    <end type="TARGET" nodeId="17"/>  
+  </generalization>  
+  <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
