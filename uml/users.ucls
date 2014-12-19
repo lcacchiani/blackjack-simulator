@@ -1,80 +1,72 @@
-<class-diagram version="1.0.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.7" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true">  
-  <class id="1" corner="BOTTOM_RIGHT" language="java" name="com.luca.blackjack.user.SimpleDealer" project="blackjack" 
-    file="/blackjack/src/com/luca/blackjack/user/SimpleDealer.java" binary="false">    
-    <position x="166" y="298" width="-1" height="-1"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
+  <class id="1" language="java" name="com.luca.blackjack.user.SimpleDealer" project="blackjack" 
+    file="/blackjack/src/com/luca/blackjack/user/SimpleDealer.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="166" y="298"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="2" corner="BOTTOM_RIGHT" language="java" name="com.luca.blackjack.user.UserUtils" project="blackjack" 
-    file="/blackjack/src/com/luca/blackjack/user/UserUtils.java" binary="false">    
-    <position x="438" y="295" width="-1" height="-1"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
+  <class id="2" language="java" name="com.luca.blackjack.user.UserUtils" project="blackjack" 
+    file="/blackjack/src/com/luca/blackjack/user/UserUtils.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="438" y="295"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" corner="BOTTOM_RIGHT" language="java" name="com.luca.blackjack.user.SimplePlayer" project="blackjack" 
-    file="/blackjack/src/com/luca/blackjack/user/SimplePlayer.java" binary="false">    
-    <position x="847" y="299" width="-1" height="-1"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
+  <class id="3" language="java" name="com.luca.blackjack.user.SimplePlayer" project="blackjack" 
+    file="/blackjack/src/com/luca/blackjack/user/SimplePlayer.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="850" y="633"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="4" corner="BOTTOM_RIGHT" language="java" name="com.luca.blackjack.user.Dealer" project="blackjack" 
-    file="/blackjack/src/com/luca/blackjack/user/Dealer.java" binary="false">    
-    <position x="168" y="-69" width="-1" height="-1"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
+  <interface id="4" language="java" name="com.luca.blackjack.user.Dealer" project="blackjack" 
+    file="/blackjack/src/com/luca/blackjack/user/Dealer.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="168" y="-69"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="5" corner="BOTTOM_RIGHT" language="java" name="com.luca.blackjack.user.Player" project="blackjack" 
-    file="/blackjack/src/com/luca/blackjack/user/Player.java" binary="false">    
-    <position x="844" y="-68" width="-1" height="-1"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
+  <interface id="5" language="java" name="com.luca.blackjack.user.Player" project="blackjack" 
+    file="/blackjack/src/com/luca/blackjack/user/Player.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="844" y="-68"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="6" corner="BOTTOM_RIGHT" language="java" name="com.luca.blackjack.user.User" project="blackjack" 
-    file="/blackjack/src/com/luca/blackjack/user/User.java" binary="false">    
-    <position x="464" y="-69" width="-1" height="-1"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
+  <interface id="6" language="java" name="com.luca.blackjack.user.User" project="blackjack" 
+    file="/blackjack/src/com/luca/blackjack/user/User.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="464" y="-69"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <realization>    
-    <end type="SOURCE" nodeId="1"/>    
-    <end type="TARGET" nodeId="4"/>  
-  </realization>  
-  <generalization>    
-    <end type="SOURCE" nodeId="4"/>    
-    <end type="TARGET" nodeId="6"/>  
+  <generalization id="7">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="6"/>  
   </generalization>  
-  <realization>    
-    <end type="SOURCE" nodeId="3"/>    
-    <end type="TARGET" nodeId="5"/>  
-  </realization>  
-  <generalization>    
-    <end type="SOURCE" nodeId="1"/>    
-    <end type="TARGET" nodeId="2"/>  
+  <generalization id="8">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
   </generalization>  
-  <generalization>    
-    <end type="SOURCE" nodeId="3"/>    
-    <end type="TARGET" nodeId="2"/>  
-  </generalization>  
-  <generalization>    
-    <end type="SOURCE" nodeId="5"/>    
-    <end type="TARGET" nodeId="6"/>  
-  </generalization>  
-  <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
-    <attributes public="true" package="true" protected="true" private="true"/>    
-    <operations public="true" package="true" protected="true" private="true"/>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
   </classifier-display>  
   <association-display labels="true" multiplicity="true"/>
 </class-diagram>
