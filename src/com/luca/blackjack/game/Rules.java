@@ -55,10 +55,20 @@ public interface Rules {
 	public boolean isEarlySurrender();
 
 	/**
-	 * @param earlySurrender
-	 *            the earlySurrender to set
+	 * @return the lateSurrender
 	 */
-	public void setEarlySurrender(boolean earlySurrender);
+	public boolean isLateSurrender();
+
+	/**
+	 * @return the noSurrenderAllowed
+	 */
+	public boolean isNoSurrenderAllowed();
+
+	/**
+	 * @param surrender
+	 *            the surrender type to set
+	 */
+	public void setSurrender(String surrender);
 
 	/**
 	 * @return the resplit

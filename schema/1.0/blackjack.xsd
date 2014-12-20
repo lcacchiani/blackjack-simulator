@@ -140,7 +140,15 @@
 	<xs:complexType name="rules">
 		<xs:sequence>
 			<xs:element name="soft-17" minOccurs="1" maxOccurs="1" type="xs:boolean" />
-			<xs:element name="early-surrender" minOccurs="1" maxOccurs="1" type="xs:boolean" />
+			<xs:element name="surrender" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="no-surrender-allowed" />
+						<xs:enumeration value="late-surrender" />
+						<xs:enumeration value="early-surrender" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
 			<xs:element name="resplit" minOccurs="1" maxOccurs="1">
 				<xs:simpleType>
 					<xs:restriction base="xs:integer">

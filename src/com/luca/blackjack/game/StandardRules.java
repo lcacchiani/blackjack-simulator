@@ -19,7 +19,7 @@ import com.luca.blackjack.NoLog;
  */
 
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(name = "standard-rules", propOrder = { "soft17", "earlySurrender",
+@XmlType(name = "standard-rules", propOrder = { "soft17", "surrender",
 		"resplit", "resplitSplitAces", "hitSplitAces", "doubleSplitAces",
 		"noDoubleAfterSplit", "renoRule", "renoRuleEuropean", "noHoleCard",
 		"obo", "blackjackPayout", "dealerWinTies", "winPayout" })
@@ -27,6 +27,8 @@ public class StandardRules extends GenericRules {
 
 	private Boolean soft17;
 	private Boolean earlySurrender;
+	private Boolean lateSurrender;
+	private Boolean noSurrenderAllowed;
 	private Integer resplit;
 	private Boolean resplitSplitAces;
 	private Boolean hitSplitAces;
@@ -69,11 +71,45 @@ public class StandardRules extends GenericRules {
 	}
 
 	/**
-	 * @see com.luca.blackjack.game.Rules#setEarlySurrender(boolean)
+	 * @see com.luca.blackjack.game.Rules#isLateSurrender()
 	 */
-	@XmlElement(name = "early-surrender")
-	public void setEarlySurrender(boolean earlySurrender) {
-		this.earlySurrender = earlySurrender;
+	public boolean isLateSurrender() {
+		return lateSurrender;
+	}
+
+	/**
+	 * @see com.luca.blackjack.game.Rules#isNoSurrenderAllowed()
+	 */
+	public boolean isNoSurrenderAllowed() {
+		return noSurrenderAllowed;
+	}
+
+	/**
+	 * @see com.luca.blackjack.game.Rules#setSurrender(String)
+	 */
+	@XmlElement(name = "surrender")
+	public void setSurrender(String surrender) {
+		if (surrender == null)
+			throw new IllegalArgumentException("Surrender type cannot be null");
+		switch (surrender) {
+		case "no-surrender-allowed":
+			earlySurrender = false;
+			lateSurrender = false;
+			noSurrenderAllowed = true;
+			break;
+		case "early-surrender":
+			earlySurrender = true;
+			lateSurrender = false;
+			noSurrenderAllowed = false;
+			break;
+		case "late-surrender":
+			earlySurrender = false;
+			lateSurrender = true;
+			noSurrenderAllowed = false;
+			break;
+		default:
+			throw new IllegalStateException("Surrender type not found");
+		}
 	}
 
 	/**
@@ -298,6 +334,10 @@ public class StandardRules extends GenericRules {
 			return false;
 		if (earlySurrender == null)
 			return false;
+		if (lateSurrender == null)
+			return false;
+		if (noSurrenderAllowed == null)
+			return false;
 		if (resplit == null)
 			return false;
 		if (resplitSplitAces == null)
@@ -329,13 +369,15 @@ public class StandardRules extends GenericRules {
 	@NoLog
 	public String toString() {
 		return "StandardRules [soft17=" + soft17 + ", earlySurrender="
-				+ earlySurrender + ", resplit=" + resplit
-				+ ", resplitSplitAces=" + resplitSplitAces + ", hitSplitAces="
-				+ hitSplitAces + ", doubleSplitAces=" + doubleSplitAces
-				+ ", noDoubleAfterSplit=" + noDoubleAfterSplit + ", renoRule="
-				+ renoRule + ", renoRuleEuropean=" + renoRuleEuropean
-				+ ", noHoleCard=" + noHoleCard + ", obo=" + obo
-				+ ", blackjackPayout=" + blackjackPayout + ", dealerWinTies="
-				+ dealerWinTies + ", winPayout=" + winPayout + "]";
+				+ earlySurrender + ", lateSurrender=" + lateSurrender
+				+ ", noSurrenderAllowed=" + noSurrenderAllowed + ", resplit="
+				+ resplit + ", resplitSplitAces=" + resplitSplitAces
+				+ ", hitSplitAces=" + hitSplitAces + ", doubleSplitAces="
+				+ doubleSplitAces + ", noDoubleAfterSplit="
+				+ noDoubleAfterSplit + ", renoRule=" + renoRule
+				+ ", renoRuleEuropean=" + renoRuleEuropean + ", noHoleCard="
+				+ noHoleCard + ", obo=" + obo + ", blackjackPayout="
+				+ blackjackPayout + ", dealerWinTies=" + dealerWinTies
+				+ ", winPayout=" + winPayout + "]";
 	}
 }
