@@ -187,30 +187,6 @@ public aspect Monitor {
 		record.setDescription(description.toString());
 		topUpRecordStack(record);
 	}
-	
-	pointcut split():
-        execution(* com.luca.blackjack.user.Player.split (..));
-
-	after() returning (ComplexHand complexHand): split(){
-		Player player = (Player) thisJoinPoint.getThis();
-		Record record = this.getRecord();
-		StringBuilder description = new StringBuilder();
-		try {
-			description.append(player.getName());
-			description.append(" put anoter £");
-			description.append("???");
-			description.append(", and he's now left with £");
-			description.append(player.getBalance());
-		} catch (NullPointerException e) {
-			throw new IllegalStateException("some required value(s) were null "
-					+ e);
-		}
-
-		record.setName(player.getName());
-		record.setType(RecordType.SPLIT);
-		record.setDescription(description.toString());
-		topUpRecordStack(record);
-	}
 
 	pointcut hit():
         execution(* com.luca.blackjack.user.User.hit (..));
@@ -275,7 +251,7 @@ public aspect Monitor {
 		record.setDescription(description.toString());
 		topUpRecordStack(record);
 	}
-	
+
 	pointcut setResult():
         execution(* com.luca.blackjack.user.Player.setResult (..));
 
@@ -301,7 +277,7 @@ public aspect Monitor {
 		record.setDescription(description.toString());
 		topUpRecordStack(record);
 	}
-	
+
 	pointcut playGame():
         execution(* com.luca.blackjack.game.Table.playGame (..));
 
@@ -316,7 +292,7 @@ public aspect Monitor {
 		record.setDescription(description.toString());
 		topUpRecordStack(record);
 	}
-	
+
 	after(): playGame(){
 		Table table = (Table) thisJoinPoint.getThis();
 		Record record = this.getRecord();

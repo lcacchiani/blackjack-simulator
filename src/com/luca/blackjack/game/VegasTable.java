@@ -304,20 +304,21 @@ public class VegasTable extends GenericTable implements Comparable<Table> {
 
 		// player plays the game
 		for (Player player : players) {
-			int moveNo = 0;
-			int resplitNo = 0;
+			int move = 0;
+			int split = 0;
 			while (player.hasActiveHand()) {
 				Move playerMove = player.getMove(dealerFirstCard, rules,
-						moveNo++, resplitNo);
+						move++, split);
 
 				// re-split
 				if (playerMove.equals(Move.SPLIT)) {
-					if (rules.getResplit() == 0)
+					if (move != 0 && rules.getResplit() == 0)
 						throw new IllegalStateException(
 								"Rules don't allow re-split");
-					if (resplitNo++ > rules.getResplit())
+					if (move != 0 && split > rules.getResplit())
 						throw new IllegalStateException("Only "
 								+ rules.getResplit() + " resplit(s) allowed");
+					split++;
 				}
 
 				player.play(playerMove, deck);

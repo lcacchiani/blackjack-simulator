@@ -6,7 +6,7 @@ package com.luca.blackjack.game;
  * <li><b>Soft 17</b>: usually the dealer must hit soft 17 (H17). If
  * <code>soft17</code> is <code>true</code>, the dealer must stand-on-soft 17
  * (S17).
- * <li><b>Early surrender</b>: allows players to surrender before the dealer
+ * <li><b>Surrender</b>: allows players to surrender before or after the dealer
  * checks the hole card.
  * <li><b>Resplit</b>: number of times a player is allowed to resplit. If 0, the
  * player is not allowed to resplit; if 1, the player is only allowed to resplit

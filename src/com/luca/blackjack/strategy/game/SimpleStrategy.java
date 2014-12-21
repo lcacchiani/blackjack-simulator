@@ -77,7 +77,7 @@ public class SimpleStrategy extends GenericPlayerGameStrategy {
 	 *      Card, Rules, int, int)
 	 */
 	public Move getMove(List<Card> cards, Card dealerCard, Rules rules,
-			int moveNo, int resplitNo) {
+			int moveNo, int split) {
 		if (cards == null || cards.isEmpty())
 			throw new IllegalArgumentException("At least one card is required");
 		if (dealerCard == null)
@@ -91,7 +91,7 @@ public class SimpleStrategy extends GenericPlayerGameStrategy {
 		if (cards.size() == 2 && c1 == c2) {
 			Move move = M3[c1 - 2][dealerCard.getHighestValue() - 2];
 			// resplit rule check
-			if (!move.equals(Move.SPLIT) || (resplitNo < rules.getResplit()))
+			if (!move.equals(Move.SPLIT) || moveNo == 0 || split <= rules.getResplit())
 				return move;
 		}
 		if (cards.size() == 2 && (c1 == 11 || c2 == 11))
