@@ -291,7 +291,7 @@ public class VegasTable extends GenericTable implements Comparable<Table> {
 			}
 			boolean playerHasBlackJack = player.hasBlackJack();
 			if (dealerHasBlackJack && playerHasBlackJack)
-				player.setResult(Result.PUSH, rules);
+				player.setResult(Result.STANDOFF, rules);
 			else if (dealerHasBlackJack && !playerHasBlackJack)
 				player.setResult(Result.LOST_DEALER_BLACKJACK, rules);
 			else if (!dealerHasBlackJack && playerHasBlackJack)

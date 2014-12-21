@@ -4,7 +4,7 @@
 package com.luca.blackjack.report;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +39,7 @@ public class StandardReport extends GenericReport {
 			"application-context.xml");
 
 	private String name;
-	private Date date;
+	private Calendar date;
 	private List<Record> records;
 	private Map<String, PlayerReport> playerReports;
 
@@ -69,7 +69,7 @@ public class StandardReport extends GenericReport {
 	/**
 	 * @see com.luca.blackjack.report.Report#getDate()
 	 */
-	public Date getDate() {
+	public Calendar getDate() {
 		return date;
 	}
 
@@ -77,7 +77,7 @@ public class StandardReport extends GenericReport {
 	 * @see com.luca.blackjack.report.Report#setDate(java.util.Date)
 	 */
 	@XmlElement(name = "date")
-	public void setDate(Date date) {
+	public void setDate(Calendar date) {
 		if (date == null)
 			throw new IllegalArgumentException("date cannot be null");
 		this.date = date;

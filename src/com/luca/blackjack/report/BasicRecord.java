@@ -3,7 +3,7 @@
  */
 package com.luca.blackjack.report;
 
-import java.util.Date;
+import java.util.Calendar;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -25,7 +25,7 @@ import com.luca.blackjack.NoLog;
 		"description" })
 public class BasicRecord extends GenericRecord {
 
-	private Date date;
+	private Calendar date;
 	private RecordType type;
 	private String name;
 	private String description;
@@ -37,10 +37,10 @@ public class BasicRecord extends GenericRecord {
 	}
 
 	/**
-	 * @see com.luca.blackjack.report.Record#setDate(java.util.Date)
+	 * @see com.luca.blackjack.report.Record#setDate(java.util.Calendar)
 	 */
 	@XmlElement(name = "date")
-	public void setDate(Date date) {
+	public void setDate(Calendar date) {
 		if (date == null)
 			throw new IllegalArgumentException("date cannot be null");
 		this.date = date;
@@ -49,7 +49,7 @@ public class BasicRecord extends GenericRecord {
 	/**
 	 * @see com.luca.blackjack.report.Record#getDate()
 	 */
-	public Date getDate() {
+	public Calendar getDate() {
 		return date;
 	}
 

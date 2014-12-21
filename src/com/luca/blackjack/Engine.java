@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
@@ -79,7 +79,7 @@ public class Engine {
 				
 				// initialise the report
 				Report report = (Report) context.getBean("report");
-				Date date = new Date(System.currentTimeMillis());
+				Calendar date = Calendar.getInstance();
 				report.setDate(date);
 				report.setName(table.getName());
 				for (Player player : table.getPlayers())
@@ -106,8 +106,8 @@ public class Engine {
 					report.finalisePlayerReport(player);
 				reports.add(report);
 				
-				for (PlayerReport r : report.getPlayerReports())
-					System.out.println(r);
+		//		for (PlayerReport r : report.getPlayerReports())
+					//System.out.println(r);
 			}
 		}
 	}
@@ -206,7 +206,7 @@ public class Engine {
 
 	@NoLog
 	public static void topUpRecordStack(Record record) {
-		System.out.println(record.getDescription());
+	//	System.out.println(record.getDescription());
 		recordStack.add(record);
 	}
 

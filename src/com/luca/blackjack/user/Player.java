@@ -83,7 +83,8 @@ public interface Player extends User {
 
 	/**
 	 * Sets the {@link Result} of the evaluated {@link Hand} and pays the player
-	 * if that's the case.
+	 * if that's the case. Not all the results can be set at any time during the
+	 * game.
 	 * 
 	 * @param result
 	 *            result of the current {@link Hand}

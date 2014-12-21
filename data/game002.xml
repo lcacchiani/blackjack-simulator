@@ -78,7 +78,7 @@
 				<obo>false</obo>
 				<blackjack-payout>3:2</blackjack-payout>
 				<dealer-win-ties>false</dealer-win-ties>
-				<win-payout>2:1</win-payout>
+				<win-payout>1:1</win-payout>
 			</rules>
 		</table>
 	</tables>

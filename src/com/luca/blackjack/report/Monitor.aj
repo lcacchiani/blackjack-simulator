@@ -3,7 +3,7 @@ package com.luca.blackjack.report;
 import static com.luca.blackjack.Engine.splitCamelCase;
 import static com.luca.blackjack.Engine.topUpRecordStack;
 
-import java.util.Date;
+import java.util.Calendar;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -34,7 +34,7 @@ public aspect Monitor {
 
 	private Record getRecord() {
 		Record r = (Record) context.getBean("record");
-		Date d = new Date(System.currentTimeMillis());
+		Calendar d = Calendar.getInstance();
 		r.setDate(d);
 		return r;
 	}
@@ -215,7 +215,7 @@ public aspect Monitor {
 	pointcut hit():
         execution(* com.luca.blackjack.user.User.hit (..));
 
-	after() returning (Card card): hit(){
+	after() returning  (Card card): hit(){
 		User user = (User) thisJoinPoint.getThis();
 		Record record = this.getRecord();
 		StringBuilder description = new StringBuilder();

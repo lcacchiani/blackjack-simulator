@@ -1,6 +1,6 @@
 package com.luca.blackjack.report;
 
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  * Records are events that occur during the game.
@@ -20,14 +20,14 @@ public interface Record {
 	 * @throws IllegalArgumentException
 	 *             if date is <code>null</code>
 	 */
-	public void setDate(Date date);
+	public void setDate(Calendar date);
 
 	/**
 	 * Gets the date when the record has been generated.
 	 * 
 	 * @return the generation date
 	 */
-	public Date getDate();
+	public Calendar getDate();
 
 	/**
 	 * Sets the type of this record.

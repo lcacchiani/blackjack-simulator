@@ -130,7 +130,6 @@ public class PlayerHand extends HandUtils implements ComplexHand {
 		childB = createChildHand(bet - bet / 2, node + 1, cards.get(1));
 		split = true;
 		setStatus(Status.EVALUATED);
-		// FIXME issue with final balance
 	}
 
 	/**

@@ -224,6 +224,7 @@ public class SimplePlayer extends GenericPlayer {
 	/**
 	 * @see com.luca.blackjack.user.Userr#hit(com.luca.blackjack.card.Deck)
 	 */
+	@Required(Requirement.USER_ACTIVE_HAND)
 	public Card hit(Deck deck) {
 		if (deck == null)
 			throw new IllegalArgumentException("You must provide a card");
@@ -267,9 +268,6 @@ public class SimplePlayer extends GenericPlayer {
 	 */
 	protected ComplexHand split() {
 		ComplexHand hand = ((ComplexHand) findNextHand(Status.ACTIVE));
-		if (balance - hand.getBet() < 0)
-			throw new IllegalStateException("You aint got enough money mate!");
-		this.balance -= hand.getBet();
 		hand.split();
 		return hand;
 	}
@@ -315,14 +313,10 @@ public class SimplePlayer extends GenericPlayer {
 	public void setResult(Result result, Rules rules) {
 		ComplexHand hand;
 		switch (result) {
-		case WON_BLACKJACK:
-			hand = (ComplexHand) findNextHand(Status.CLOSED);
-			win(hand.getBet() * rules.getBlackjackPayoutValue());
-			break;
 		case WON_DEALER_BUSTED_OUT:
 		case WON_HIGHER_SCORE:
 			hand = (ComplexHand) findNextHand(Status.CLOSED);
-			win(hand.getBet() * rules.getWinPayoutValue());
+			win(hand.getBet() * rules.getWinPayoutValue() + hand.getBet());
 			break;
 		case PUSH:
 			hand = (ComplexHand) findNextHand(Status.CLOSED);
@@ -338,6 +332,14 @@ public class SimplePlayer extends GenericPlayer {
 		case SURRENDERED:
 			hand = (ComplexHand) findNextHand(Status.ACTIVE);
 			win(hand.getBet() / 2);
+			break;
+		case WON_BLACKJACK:
+			hand = (ComplexHand) findNextHand(Status.ACTIVE);
+			win(hand.getBet() * rules.getBlackjackPayoutValue() + hand.getBet());
+			break;
+		case STANDOFF:
+			hand = (ComplexHand) findNextHand(Status.ACTIVE);
+			win(hand.getBet());
 			break;
 		default:
 			throw new IllegalStateException("Result not recognised: "

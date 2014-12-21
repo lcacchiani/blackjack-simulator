@@ -31,7 +31,6 @@ public abstract class UserUtils implements Comparable<User> {
 		Hand hand = findNextHand(Status.ACTIVE);
 		if (hand == null || !hand.isBlackJack())
 			return false;
-		hand.setStatus(Status.CLOSED);
 		return true;
 	}
 

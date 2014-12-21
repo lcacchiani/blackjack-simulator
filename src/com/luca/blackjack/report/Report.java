@@ -1,6 +1,6 @@
 package com.luca.blackjack.report;
 
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import com.luca.blackjack.user.Player;
@@ -37,7 +37,7 @@ public interface Report {
 	 * 
 	 * @return the generation date
 	 */
-	public Date getDate();
+	public Calendar getDate();
 
 	/**
 	 * Sets the date when the report has been generated.
@@ -47,7 +47,7 @@ public interface Report {
 	 * @throws IllegalArgumentException
 	 *             if date is <code>null</code>
 	 */
-	public void setDate(Date date);
+	public void setDate(Calendar date);
 
 	/**
 	 * Gets the list of report records.

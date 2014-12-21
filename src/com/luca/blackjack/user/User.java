@@ -48,7 +48,7 @@ public interface User {
 
 	/**
 	 * Checks whether this {@link User} has got a black jack or not in an active
-	 * hand. If <code>true</code>, sets the hand to closed.
+	 * hand.
 	 * 
 	 * @return <code>true</code> if blackjack, <code>false</code> otherwise
 	 */
