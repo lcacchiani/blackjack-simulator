@@ -28,7 +28,7 @@ public class StandardRules extends GenericRules {
 	private Boolean soft17;
 	private Boolean earlySurrender;
 	private Boolean lateSurrender;
-	private Boolean noSurrenderAllowed;
+	private Boolean surrenderAllowed;
 	private Integer resplit;
 	private Boolean resplitSplitAces;
 	private Boolean hitSplitAces;
@@ -78,10 +78,10 @@ public class StandardRules extends GenericRules {
 	}
 
 	/**
-	 * @see com.luca.blackjack.game.Rules#isNoSurrenderAllowed()
+	 * @see com.luca.blackjack.game.Rules#isSurrenderAllowed()
 	 */
-	public boolean isNoSurrenderAllowed() {
-		return noSurrenderAllowed;
+	public boolean isSurrenderAllowed() {
+		return surrenderAllowed;
 	}
 
 	/**
@@ -92,20 +92,20 @@ public class StandardRules extends GenericRules {
 		if (surrender == null)
 			throw new IllegalArgumentException("Surrender type cannot be null");
 		switch (surrender) {
-		case "no-surrender-allowed":
+		case "no-surrender":
 			earlySurrender = false;
 			lateSurrender = false;
-			noSurrenderAllowed = true;
+			surrenderAllowed = false;
 			break;
 		case "early-surrender":
 			earlySurrender = true;
 			lateSurrender = false;
-			noSurrenderAllowed = false;
+			surrenderAllowed = true;
 			break;
 		case "late-surrender":
 			earlySurrender = false;
 			lateSurrender = true;
-			noSurrenderAllowed = false;
+			surrenderAllowed = true;
 			break;
 		default:
 			throw new IllegalStateException("Surrender type not found");
@@ -336,7 +336,7 @@ public class StandardRules extends GenericRules {
 			return false;
 		if (lateSurrender == null)
 			return false;
-		if (noSurrenderAllowed == null)
+		if (surrenderAllowed == null)
 			return false;
 		if (resplit == null)
 			return false;
@@ -370,7 +370,7 @@ public class StandardRules extends GenericRules {
 	public String toString() {
 		return "StandardRules [soft17=" + soft17 + ", earlySurrender="
 				+ earlySurrender + ", lateSurrender=" + lateSurrender
-				+ ", noSurrenderAllowed=" + noSurrenderAllowed + ", resplit="
+				+ ", noSurrenderAllowed=" + surrenderAllowed + ", resplit="
 				+ resplit + ", resplitSplitAces=" + resplitSplitAces
 				+ ", hitSplitAces=" + hitSplitAces + ", doubleSplitAces="
 				+ doubleSplitAces + ", noDoubleAfterSplit="

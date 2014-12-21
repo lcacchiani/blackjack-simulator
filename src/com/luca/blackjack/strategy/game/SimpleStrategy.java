@@ -128,4 +128,38 @@ public class SimpleStrategy extends GenericPlayerGameStrategy {
 	public String toString() {
 		return "SimpleStrategy []";
 	}
+
+	/**
+	 * @see PlayerGameStrategy#surrender(List, Card, Rules)
+	 */
+	public boolean surrender(List<Card> cards, Card dealerCard, Rules rules) {
+		if (cards == null || cards.isEmpty())
+			throw new IllegalArgumentException("At least one card is required");
+		if (dealerCard == null)
+			throw new IllegalArgumentException(
+					"The dealer card must be provided");
+		if (rules == null)
+			throw new IllegalArgumentException(
+					"The rules of this game must be provided");
+		if (!rules.isSurrenderAllowed() || cards.size() != 2)
+			return false;
+		int sum = getSumCardValues(cards);
+		int dc = dealerCard.getHighestValue();
+		if (rules.isLateSurrender()) {
+			if (sum == 15 && dc == 10)
+				return true;
+			if (sum == 16 && (dc == 9 || dc == 10 || dealerCard.isAce()))
+				return true;
+		}
+		if (rules.isEarlySurrender()) {
+			if (dealerCard.isAce() && sum <= 17 && sum >= 5
+					&& (sum < 8 || sum > 11))
+				return true;
+			if (dc == 10 && (sum == 14 || sum == 15 || sum == 16))
+				return true;
+			if (dc == 9 && sum == 16)
+				return true;
+		}
+		return false;
+	}
 }

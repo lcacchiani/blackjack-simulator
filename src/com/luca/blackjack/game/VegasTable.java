@@ -279,8 +279,16 @@ public class VegasTable extends GenericTable implements Comparable<Table> {
 		boolean dealerHasBlackJack = dealer.hasBlackJack();
 		Card dealerFirstCard = dealer.getFirstCard();
 
-		// anybody got blackjack?
+		// check for surrender and blackjack
 		for (Player player : players) {
+			if (rules.isSurrenderAllowed()) {
+				boolean surrend = player.surrender(dealerFirstCard, rules);
+				if (surrend)
+					if (rules.isEarlySurrender() || !dealerHasBlackJack) {
+						player.setResult(Result.SURRENDERED, rules);
+						continue;
+					}
+			}
 			boolean playerHasBlackJack = player.hasBlackJack();
 			if (dealerHasBlackJack && playerHasBlackJack)
 				player.setResult(Result.PUSH, rules);
@@ -301,18 +309,6 @@ public class VegasTable extends GenericTable implements Comparable<Table> {
 			while (player.hasActiveHand()) {
 				Move playerMove = player.getMove(dealerFirstCard, rules,
 						moveNo++, resplitNo);
-
-				// early surrender
-				if (playerMove.equals(Move.SURRENDER)) {
-					if (!rules.isEarlySurrender())
-						throw new IllegalStateException(
-								"Rules don't allow early surrender");
-					if (moveNo > 0)
-						throw new IllegalStateException(
-								"Surrender only allowed on the first move");
-					player.setResult(Result.SURRENDED, rules);
-					break;
-				}
 
 				// re-split
 				if (playerMove.equals(Move.SPLIT)) {

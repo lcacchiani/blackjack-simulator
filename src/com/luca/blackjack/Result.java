@@ -15,7 +15,7 @@ public enum Result {
 	WON_HIGHER_SCORE("Won"), //
 	LOST_BUSTED_OUT("Lost"), //
 	LOST_DEALER_BLACKJACK("Lost"), 
-	SURRENDED ("Surrended");
+	SURRENDERED ("Surrendered");
 
 	private String description;
 

@@ -60,9 +60,9 @@ public interface Rules {
 	public boolean isLateSurrender();
 
 	/**
-	 * @return the noSurrenderAllowed
+	 * @return the surrenderAllowed
 	 */
-	public boolean isNoSurrenderAllowed();
+	public boolean isSurrenderAllowed();
 
 	/**
 	 * @param surrender

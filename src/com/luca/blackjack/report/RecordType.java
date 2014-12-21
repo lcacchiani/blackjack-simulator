@@ -17,7 +17,8 @@ public enum RecordType {
 	INITIALISE("Initialise"), //
 	MOVE("Move"), //
 	PLAY("Play"), //
-	RESULT("Result"); //
+	RESULT("Result"), //
+	SPLIT("SPLIT");
 
 	private String description;
 

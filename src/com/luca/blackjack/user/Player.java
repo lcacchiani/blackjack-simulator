@@ -68,6 +68,20 @@ public interface Player extends User {
 	public Move getMove(Card dealerCard, Rules rules, int moveNo, int resplitNo);
 
 	/**
+	 * Determines whether the {@link Player} would like to surrender or not at
+	 * the beginning of the game.
+	 * 
+	 * @param dealerCard
+	 *            the {@link Dealer}'s {@link Card}
+	 * @param rules
+	 *            the {@link Rules} of this {@link Table}
+	 * @return if the {@link Player} surrenders, false otherwise
+	 * @throws IllegalStateException
+	 *             if the {@link Player} is not playing
+	 */
+	public boolean surrender(Card dealerCard, Rules rules);
+
+	/**
 	 * Sets the {@link Result} of the evaluated {@link Hand} and pays the player
 	 * if that's the case.
 	 * 

@@ -63,7 +63,7 @@
 
 	<target name="compile" depends="clean, define-aspectj-tasks, init">
 		<mkdir dir="${blackjack.basedir}/bin" />
-		<iajc encoding="UTF-8" destdir="${blackjack.basedir}/bin" source="1.6" target="1.6" debug="true" debuglevel="lines,source" fork="true" maxmem="128m">
+		<iajc encoding="UTF-8" destdir="${blackjack.basedir}/bin" source="1.7" target="1.7" debug="true" debuglevel="lines,source" fork="true" maxmem="128m">
 			<classpath refid="classpath.compile" />
 			<sourceroots location="${blackjack.basedir}/src" />
 		</iajc>

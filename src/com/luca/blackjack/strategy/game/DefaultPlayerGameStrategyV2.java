@@ -72,4 +72,11 @@ public class DefaultPlayerGameStrategyV2 extends GenericPlayerGameStrategy {
 		}
 		return prevValue;
 	}
+	
+	/**
+	 * @see PlayerGameStrategy#surrender(List, Card, Rules)
+	 */
+	public boolean surrender(List<Card> cards, Card dealerCard, Rules rules) {
+		return false;
+	}
 }

@@ -43,7 +43,7 @@ public class SimplePlayer extends GenericPlayer {
 	private InsuranceStrategy insuranceStrategy; // insurance strategy
 	private LinkedList<Result> lastResults; // stack of last results
 	private ComplexHand hand; // player's current hand
-	private Integer topUpNo = 0; // number of top ups 
+	private Integer topUpNo = 0; // number of top ups
 
 	// item solely used by JAXB to map objects that implement different
 	// interfaces
@@ -202,14 +202,14 @@ public class SimplePlayer extends GenericPlayer {
 	}
 
 	/**
-	 * @see com.luca.blackjack.user.Player#bet(com.luca.blackjack.game.StandardRules,
+	 * @see com.luca.blackjack.user.Player#bet(com.luca.blackjack.game.Rules,
 	 *      double, double)
 	 */
 	public double bet(Rules rules, double minimumBet, double maximumBet) {
 		if (rules == null)
 			throw new IllegalArgumentException("Rules must be provided");
-		double bet = bettingStrategy.getNextBet(balance,
-				lastResults.peek(), rules);
+		double bet = bettingStrategy.getNextBet(balance, lastResults.peek(),
+				rules);
 		if (bet < minimumBet) {
 			if (balance < minimumBet)
 				hand.setStatus(Status.CLOSED);
@@ -222,7 +222,7 @@ public class SimplePlayer extends GenericPlayer {
 	}
 
 	/**
-	 * @see com.luca.blackjack.user.Userr#hit(com.luca.blackjack.card.StandardDeck)
+	 * @see com.luca.blackjack.user.Userr#hit(com.luca.blackjack.card.Deck)
 	 */
 	public Card hit(Deck deck) {
 		if (deck == null)
@@ -231,7 +231,7 @@ public class SimplePlayer extends GenericPlayer {
 		findNextHand(Status.ACTIVE).addCard(c);
 		return c;
 	}
-	
+
 	protected void hitSplitHands(ComplexHand hand, Deck deck) {
 		if (deck == null)
 			throw new IllegalArgumentException("You must provide a card");
@@ -289,7 +289,7 @@ public class SimplePlayer extends GenericPlayer {
 
 	/**
 	 * @see com.luca.blackjack.user.Player#getMove(com.luca.blackjack.card.Card,
-	 *      com.luca.blackjack.game.StandardRules)
+	 *      com.luca.blackjack.game.Rules)
 	 */
 	@Required(Requirement.USER_ACTIVE_HAND)
 	public Move getMove(Card dealerCard, Rules rules, int moveNo, int resplitNo) {
@@ -299,8 +299,18 @@ public class SimplePlayer extends GenericPlayer {
 	}
 
 	/**
+	 * @see com.luca.blackjack.user.Player#surrender(com.luca.blackjack.card.Card,
+	 *      com.luca.blackjack.game.Rules)
+	 */
+	@Required(Requirement.USER_ACTIVE_HAND)
+	public boolean surrender(Card dealerCard, Rules rules) {
+		List<Card> cards = findNextHand(Status.ACTIVE).getCards();
+		return gameStrategy.surrender(cards, dealerCard, rules);
+	}
+
+	/**
 	 * @see com.luca.blackjack.user.Player#setResult(com.luca.blackjack.Result,
-	 *      com.luca.blackjack.game.StandardRules)
+	 *      com.luca.blackjack.game.Rules)
 	 */
 	public void setResult(Result result, Rules rules) {
 		ComplexHand hand;
@@ -325,8 +335,8 @@ public class SimplePlayer extends GenericPlayer {
 		case LOST_DEALER_BLACKJACK:
 			hand = (ComplexHand) findNextHand(Status.ACTIVE);
 			break;
-		case SURRENDED:
-			hand = (ComplexHand) findNextHand(Status.CLOSED);
+		case SURRENDERED:
+			hand = (ComplexHand) findNextHand(Status.ACTIVE);
 			win(hand.getBet() / 2);
 			break;
 		default:
@@ -339,7 +349,7 @@ public class SimplePlayer extends GenericPlayer {
 
 	/**
 	 * @see com.luca.blackjack.user.Player#play(com.luca.blackjack.strategy.game.
-	 *      Move, com.luca.blackjack.card.StandardDeck)
+	 *      Move, com.luca.blackjack.card.Deck)
 	 */
 	@Required(Requirement.USER_ACTIVE_HAND)
 	public void play(Move next, Deck deck) {
@@ -458,7 +468,7 @@ public class SimplePlayer extends GenericPlayer {
 				+ lastResults + ", hand=" + hand + ", objects=" + objects
 				+ ", name=" + name + ", topUpNo=" + topUpNo + "]";
 	}
-	
+
 	/**
 	 * @see com.luca.blackjack.user.Player#getActiveHand()
 	 */

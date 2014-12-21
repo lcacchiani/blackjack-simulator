@@ -50,4 +50,11 @@ public class DefaultPlayerGameStrategy extends GenericPlayerGameStrategy {
 	public String toString() {
 		return "DefaultPlayerGameStrategy []";
 	}
+
+	/**
+	 * @see PlayerGameStrategy#surrender(List, Card, Rules)
+	 */
+	public boolean surrender(List<Card> cards, Card dealerCard, Rules rules) {
+		return false;
+	}
 }

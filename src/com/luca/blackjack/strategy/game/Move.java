@@ -11,8 +11,11 @@ import com.luca.blackjack.NoLog;
  * @since 1.0
  */
 public enum Move {
-	HIT("Hit"), STAND("Stand"), SPLIT("Split"), DOUBLE("Double"), SURRENDER(
-			"Surrender"), PLAY("Play");
+	HIT("Hit"), //
+	STAND("Stand"), //
+	SPLIT("Split"), //
+	DOUBLE("Double"), //
+	PLAY("Play");
 
 	private String description;
 
