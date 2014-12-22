@@ -168,7 +168,7 @@
 			<xs:element name="resplit-split-aces" minOccurs="1" maxOccurs="1" type="xs:boolean" />
 			<xs:element name="hit-split-aces" minOccurs="1" maxOccurs="1" type="xs:boolean" />
 			<xs:element name="double-split-aces" minOccurs="1" maxOccurs="1" type="xs:boolean" />
-			<xs:element name="no-double-after-split" minOccurs="1" maxOccurs="1" type="xs:boolean" />
+			<xs:element name="double-after-split" minOccurs="1" maxOccurs="1" type="xs:boolean" />
 			<xs:element name="reno-rule" minOccurs="1" maxOccurs="1" type="xs:boolean" />
 			<xs:element name="reno-rule-european" minOccurs="1" maxOccurs="1" type="xs:boolean" />
 			<xs:element name="no-hole-card" minOccurs="1" maxOccurs="1" type="xs:boolean" />

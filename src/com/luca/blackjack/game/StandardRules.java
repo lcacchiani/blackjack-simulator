@@ -21,7 +21,7 @@ import com.luca.blackjack.NoLog;
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "standard-rules", propOrder = { "soft17", "surrender", "split",
 		"resplit", "resplitSplitAces", "hitSplitAces", "doubleSplitAces",
-		"noDoubleAfterSplit", "renoRule", "renoRuleEuropean", "noHoleCard",
+		"doubleAfterSplit", "renoRule", "renoRuleEuropean", "noHoleCard",
 		"obo", "blackjackPayout", "dealerWinTies", "winPayout" })
 public class StandardRules extends GenericRules {
 
@@ -36,7 +36,7 @@ public class StandardRules extends GenericRules {
 	private Boolean resplitSplitAces;
 	private Boolean hitSplitAces;
 	private Boolean doubleSplitAces;
-	private Boolean noDoubleAfterSplit;
+	private Boolean doubleAfterSplit;
 	private Boolean renoRule;
 	private Boolean renoRuleEuropean;
 	private Boolean noHoleCard;
@@ -230,18 +230,18 @@ public class StandardRules extends GenericRules {
 	}
 
 	/**
-	 * @see com.luca.blackjack.game.Rules#isNoDoubleAfterSplit()
+	 * @see com.luca.blackjack.game.Rules#isDoubleAfterSplit()
 	 */
-	public boolean isNoDoubleAfterSplit() {
-		return noDoubleAfterSplit;
+	public boolean isDoubleAfterSplit() {
+		return doubleAfterSplit;
 	}
 
 	/**
-	 * @see com.luca.blackjack.game.Rules#setNoDoubleAfterSplit(boolean)
+	 * @see com.luca.blackjack.game.Rules#setDoubleAfterSplit(boolean)
 	 */
-	@XmlElement(name = "no-double-after-split")
-	public void setNoDoubleAfterSplit(boolean noDoubleAfterSplit) {
-		this.noDoubleAfterSplit = noDoubleAfterSplit;
+	@XmlElement(name = "double-after-split")
+	public void setDoubleAfterSplit(boolean doubleAfterSplit) {
+		this.doubleAfterSplit = doubleAfterSplit;
 	}
 
 	/**
@@ -407,7 +407,7 @@ public class StandardRules extends GenericRules {
 			return false;
 		if (doubleSplitAces == null)
 			return false;
-		if (noDoubleAfterSplit == null)
+		if (doubleAfterSplit == null)
 			return false;
 		if (renoRule == null)
 			return false;
@@ -437,7 +437,7 @@ public class StandardRules extends GenericRules {
 				+ ", resplit=" + resplit + ", resplitSplitAces="
 				+ resplitSplitAces + ", hitSplitAces=" + hitSplitAces
 				+ ", doubleSplitAces=" + doubleSplitAces
-				+ ", noDoubleAfterSplit=" + noDoubleAfterSplit + ", renoRule="
+				+ ", noDoubleAfterSplit=" + doubleAfterSplit + ", renoRule="
 				+ renoRule + ", renoRuleEuropean=" + renoRuleEuropean
 				+ ", noHoleCard=" + noHoleCard + ", obo=" + obo
 				+ ", blackjackPayout=" + blackjackPayout + ", dealerWinTies="
