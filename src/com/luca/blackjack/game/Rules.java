@@ -8,6 +8,8 @@ package com.luca.blackjack.game;
  * (S17).
  * <li><b>Surrender</b>: allows players to surrender before or after the dealer
  * checks the hole card.
+ * <li><b>Split</b>: allows players to split on the same value or on the same
+ * rank
  * <li><b>Resplit</b>: number of times a player is allowed to resplit. If 0, the
  * player is not allowed to resplit; if 1, the player is only allowed to resplit
  * once; if -1, the player is always allowed to resplit.
@@ -69,6 +71,31 @@ public interface Rules {
 	 *            the surrender type to set
 	 */
 	public void setSurrender(String surrender);
+
+	/**
+	 * 
+	 * @return the isSplitAllowed
+	 */
+	public boolean isSplitAllowed();
+
+	/**
+	 * 
+	 * @return the isSplitSameValue
+	 */
+	public boolean isSplitSameValue();
+
+	/**
+	 * 
+	 * @return the isSplitSameRank
+	 */
+	public boolean isSplitSameRank();
+
+	/**
+	 * 
+	 * @param split
+	 *            the type of split allowed
+	 */
+	public void setSplit(String split);
 
 	/**
 	 * @return the resplit

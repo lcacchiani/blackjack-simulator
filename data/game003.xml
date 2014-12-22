@@ -67,6 +67,7 @@
 			<rules xsi:type="standard-rules">
 				<soft-17>false</soft-17>
 				<surrender>late-surrender</surrender>
+				<split>same-value</split>
 				<resplit>1</resplit>
 				<resplit-split-aces>false</resplit-split-aces>
 				<hit-split-aces>false</hit-split-aces>

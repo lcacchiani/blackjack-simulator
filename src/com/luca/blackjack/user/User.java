@@ -123,4 +123,22 @@ public interface User {
 	 *             if the {@link name} is <code>null</code> or empty
 	 */
 	public void setName(String name);
+
+	/**
+	 * Returns whether the {@link User} has got two (and two only) cards with
+	 * the same value in its active {@link Hand}.
+	 * 
+	 * @return <code>true</code> if the {@link User} has got two cards with the
+	 *         same value, <code>false</code> otherwise
+	 */
+	public boolean hasSameValueCards();
+	
+	/**
+	 * Returns whether the {@link User} has got two (and two only) cards with
+	 * the same rank in its active {@link Hand}.
+	 * 
+	 * @return <code>true</code> if the {@link User} has got two cards with the
+	 *         same rank, <code>false</code> otherwise
+	 */
+	public boolean hasSameRankCards();
 }

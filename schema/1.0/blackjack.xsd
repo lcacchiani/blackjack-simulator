@@ -149,6 +149,15 @@
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
+			<xs:element name="split" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="no-split" />
+						<xs:enumeration value="same-value" />
+						<xs:enumeration value="same-rank" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
 			<xs:element name="resplit" minOccurs="1" maxOccurs="1">
 				<xs:simpleType>
 					<xs:restriction base="xs:integer">

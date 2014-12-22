@@ -90,8 +90,9 @@ public class SimpleStrategy extends GenericPlayerGameStrategy {
 		int c2 = cards.get(1).getHighestValue();
 		if (cards.size() == 2 && c1 == c2) {
 			Move move = M3[c1 - 2][dealerCard.getHighestValue() - 2];
-			// resplit rule check
-			if (!move.equals(Move.SPLIT) || moveNo == 0 || split <= rules.getResplit())
+			if (!move.equals(Move.SPLIT)
+					|| isSplitAllowed(rules, moveNo, split, cards.get(0),
+							cards.get(1)))
 				return move;
 		}
 		if (cards.size() == 2 && (c1 == 11 || c2 == 11))
@@ -100,6 +101,22 @@ public class SimpleStrategy extends GenericPlayerGameStrategy {
 		if (sum > 21)
 			return Move.STAND;
 		return M1[sum - 5][dealerCard.getHighestValue() - 2];
+	}
+
+	private boolean isSplitAllowed(Rules rules, int moveNo, int split, Card c1,
+			Card c2) {
+		if (!rules.isSplitAllowed())
+			return false;
+		if (rules.isSplitSameValue()
+				&& c1.getHighestValue() != c2.getHighestValue())
+			return false;
+		if (rules.isSplitSameRank() && !c1.getRank().equals(c2.getRank()))
+			return false;
+		if (moveNo != 0 && rules.getResplit() == 0)
+			return false;
+		if (moveNo != 0 && split > rules.getResplit())
+			return false;
+		return true;
 	}
 
 	private int getSumCardValues(List<Card> cards) {

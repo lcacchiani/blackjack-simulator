@@ -19,7 +19,7 @@ import com.luca.blackjack.NoLog;
  */
 
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(name = "standard-rules", propOrder = { "soft17", "surrender",
+@XmlType(name = "standard-rules", propOrder = { "soft17", "surrender", "split",
 		"resplit", "resplitSplitAces", "hitSplitAces", "doubleSplitAces",
 		"noDoubleAfterSplit", "renoRule", "renoRuleEuropean", "noHoleCard",
 		"obo", "blackjackPayout", "dealerWinTies", "winPayout" })
@@ -29,6 +29,9 @@ public class StandardRules extends GenericRules {
 	private Boolean earlySurrender;
 	private Boolean lateSurrender;
 	private Boolean surrenderAllowed;
+	private Boolean splitSameValue;
+	private Boolean splitSameRank;
+	private Boolean splitAllowed;
 	private Integer resplit;
 	private Boolean resplitSplitAces;
 	private Boolean hitSplitAces;
@@ -113,6 +116,55 @@ public class StandardRules extends GenericRules {
 	}
 
 	/**
+	 * @see com.luca.blackjack.game.Rules#isSplitAllowed()
+	 */
+	public boolean isSplitAllowed() {
+		return splitAllowed;
+	}
+
+	/**
+	 * @see com.luca.blackjack.game.Rules#isSplitSameValue()
+	 */
+	public boolean isSplitSameValue() {
+		return splitSameValue;
+	}
+
+	/**
+	 * @see com.luca.blackjack.game.Rules#isSplitSameRank()
+	 */
+	public boolean isSplitSameRank() {
+		return splitSameRank;
+	}
+
+	/**
+	 * @see com.luca.blackjack.game.Rules#setSplit(java.lang.String)
+	 */
+	@XmlElement(name = "split")
+	public void setSplit(String split) {
+		if (split == null)
+			throw new IllegalArgumentException("Split type cannot be null");
+		switch (split) {
+		case "no-split":
+			splitSameValue = false;
+			splitSameRank = false;
+			splitAllowed = false;
+			break;
+		case "same-value":
+			splitSameValue = true;
+			splitSameRank = false;
+			splitAllowed = true;
+			break;
+		case "same-rank":
+			splitSameValue = false;
+			splitSameRank = true;
+			splitAllowed = true;
+			break;
+		default:
+			throw new IllegalStateException("Split type not found");
+		}
+	}
+
+	/**
 	 * @see com.luca.blackjack.game.Rules#getResplit()
 	 */
 	public int getResplit() {
@@ -126,7 +178,10 @@ public class StandardRules extends GenericRules {
 	public void setResplit(int resplit) {
 		if (resplit < -1)
 			throw new IllegalArgumentException("Re-split value not recognised");
-		this.resplit = resplit;
+		if (!isSplitAllowed())
+			this.resplit = 0;
+		else
+			this.resplit = resplit == -1 ? Integer.MAX_VALUE : resplit;
 	}
 
 	/**
@@ -338,6 +393,12 @@ public class StandardRules extends GenericRules {
 			return false;
 		if (surrenderAllowed == null)
 			return false;
+		if (splitSameValue == null)
+			return false;
+		if (splitSameRank == null)
+			return false;
+		if (splitAllowed == null)
+			return false;
 		if (resplit == null)
 			return false;
 		if (resplitSplitAces == null)
@@ -370,14 +431,16 @@ public class StandardRules extends GenericRules {
 	public String toString() {
 		return "StandardRules [soft17=" + soft17 + ", earlySurrender="
 				+ earlySurrender + ", lateSurrender=" + lateSurrender
-				+ ", noSurrenderAllowed=" + surrenderAllowed + ", resplit="
-				+ resplit + ", resplitSplitAces=" + resplitSplitAces
-				+ ", hitSplitAces=" + hitSplitAces + ", doubleSplitAces="
-				+ doubleSplitAces + ", noDoubleAfterSplit="
-				+ noDoubleAfterSplit + ", renoRule=" + renoRule
-				+ ", renoRuleEuropean=" + renoRuleEuropean + ", noHoleCard="
-				+ noHoleCard + ", obo=" + obo + ", blackjackPayout="
-				+ blackjackPayout + ", dealerWinTies=" + dealerWinTies
-				+ ", winPayout=" + winPayout + "]";
+				+ ", surrenderAllowed=" + surrenderAllowed
+				+ ", splitSameValue=" + splitSameValue + ", splitSameRank="
+				+ splitSameRank + ", splitAllowed=" + splitAllowed
+				+ ", resplit=" + resplit + ", resplitSplitAces="
+				+ resplitSplitAces + ", hitSplitAces=" + hitSplitAces
+				+ ", doubleSplitAces=" + doubleSplitAces
+				+ ", noDoubleAfterSplit=" + noDoubleAfterSplit + ", renoRule="
+				+ renoRule + ", renoRuleEuropean=" + renoRuleEuropean
+				+ ", noHoleCard=" + noHoleCard + ", obo=" + obo
+				+ ", blackjackPayout=" + blackjackPayout + ", dealerWinTies="
+				+ dealerWinTies + ", winPayout=" + winPayout + "]";
 	}
 }

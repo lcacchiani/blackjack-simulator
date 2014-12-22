@@ -310,11 +310,18 @@ public class VegasTable extends GenericTable implements Comparable<Table> {
 				Move playerMove = player.getMove(dealerFirstCard, rules,
 						move++, split);
 
-				// re-split
+				// split and resplit control
 				if (playerMove.equals(Move.SPLIT)) {
-					if (move != 0 && rules.getResplit() == 0)
+					if (!rules.isSplitAllowed())
+						throw new IllegalStateException("No splits allowed");
+					if (rules.isSplitSameValue() && !player.hasSameValueCards())
 						throw new IllegalStateException(
-								"Rules don't allow re-split");
+								"Split only allowed for cards with same value");
+					if (rules.isSplitSameRank() && !player.hasSameRankCards())
+						throw new IllegalStateException(
+								"Split only allowed for cards with same rank");
+					if (move != 0 && rules.getResplit() == 0)
+						throw new IllegalStateException("No resplits allowed");
 					if (move != 0 && split > rules.getResplit())
 						throw new IllegalStateException("Only "
 								+ rules.getResplit() + " resplit(s) allowed");
