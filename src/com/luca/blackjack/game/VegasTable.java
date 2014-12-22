@@ -290,12 +290,13 @@ public class VegasTable extends GenericTable implements Comparable<Table> {
 					}
 			}
 			boolean playerHasBlackJack = player.hasBlackJack();
-			if (dealerHasBlackJack && playerHasBlackJack)
-				player.setResult(Result.STANDOFF, rules);
-			else if (dealerHasBlackJack && !playerHasBlackJack)
-				player.setResult(Result.LOST_DEALER_BLACKJACK, rules);
-			else if (!dealerHasBlackJack && playerHasBlackJack)
+			if (playerHasBlackJack && !dealerHasBlackJack)
 				player.setResult(Result.WON_BLACKJACK, rules);
+			else if (playerHasBlackJack && dealerHasBlackJack
+					&& !rules.isDealerWinTies())
+				player.setResult(Result.STANDOFF, rules);
+			else if (dealerHasBlackJack)
+				player.setResult(Result.LOST_DEALER_BLACKJACK, rules);
 		}
 
 		// close the game if the dealer has got blackjack
@@ -356,7 +357,8 @@ public class VegasTable extends GenericTable implements Comparable<Table> {
 				int playerHandValue = player.getHandValue();
 				if (playerHandValue > dealerHandValue)
 					player.setResult(Result.WON_HIGHER_SCORE, rules);
-				else if (playerHandValue == dealerHandValue)
+				else if (playerHandValue == dealerHandValue
+						&& !rules.isDealerWinTies())
 					player.setResult(Result.PUSH, rules);
 				else
 					player.setResult(Result.LOST_LOWER_SCORE, rules);
