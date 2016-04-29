@@ -72,7 +72,7 @@
 				<resplit-split-aces>false</resplit-split-aces>
 				<hit-split-aces>false</hit-split-aces>
 				<double-split-aces>false</double-split-aces>
-				<double-after-split>false</double-after-split>
+				<no-double-after-split>false</no-double-after-split>
 				<reno-rule>false</reno-rule>
 				<reno-rule-european>false</reno-rule-european>
 				<no-hole-card>false</no-hole-card>
