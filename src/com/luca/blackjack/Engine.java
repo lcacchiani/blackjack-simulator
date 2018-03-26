@@ -73,7 +73,7 @@ public class Engine {
 		List<Blackjack> games = (List<Blackjack>) bulkImportBean
 				.getImportedData();
 
-		// let's the simulation begin!
+		// let the simulation begin!
 		for (Blackjack game : games) {
 			for (Table table : game.getTables()) {
 				
