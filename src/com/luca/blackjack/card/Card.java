@@ -13,7 +13,6 @@ import com.luca.blackjack.NoLog;
  * on Wikipedia</a>
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public enum Card {

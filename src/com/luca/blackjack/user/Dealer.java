@@ -12,7 +12,6 @@ import com.luca.blackjack.strategy.game.Move;
  * need to show their first card to the players to kick off the game.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public interface Dealer extends User {

@@ -14,7 +14,6 @@ import javax.xml.bind.annotation.XmlType;
  * name of the type by using the {@link XmlType} annotation.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 

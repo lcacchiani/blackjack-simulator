@@ -9,7 +9,6 @@ import com.luca.blackjack.user.Player;
  * Blackjack reports are a collection of records that document a blackjack game.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  * 
  */

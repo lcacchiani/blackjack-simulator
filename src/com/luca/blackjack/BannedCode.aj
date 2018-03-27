@@ -7,7 +7,6 @@ import java.util.Date;
  * inappropriate in an application server environment.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public aspect BannedCode {

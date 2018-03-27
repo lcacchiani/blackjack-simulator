@@ -7,7 +7,6 @@ import com.luca.blackjack.NoLog;
  * blackjack game.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public enum Move {

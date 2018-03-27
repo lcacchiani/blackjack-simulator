@@ -15,7 +15,6 @@ import com.luca.blackjack.user.Player;
  * Implementation of {@link ComplexHand} used by {@link Player}s.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  * @see ComplexHand
  * @see Hand

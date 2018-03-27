@@ -4,7 +4,6 @@ package com.luca.blackjack;
  * List of possible outcomes of a single blackjack game
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public enum Result {

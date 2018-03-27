@@ -16,7 +16,6 @@ import com.luca.blackjack.game.Rules;
  * cards is less than 17, the player hits; otherwise, the player stands.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 

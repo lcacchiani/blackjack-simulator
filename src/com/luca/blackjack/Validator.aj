@@ -10,7 +10,6 @@ import com.luca.blackjack.user.User;
  * broadly used.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public aspect Validator {

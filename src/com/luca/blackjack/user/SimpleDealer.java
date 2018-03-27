@@ -24,7 +24,6 @@ import com.luca.blackjack.strategy.game.Move;
  * Simple dealer valid for all the blackjack tables.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 

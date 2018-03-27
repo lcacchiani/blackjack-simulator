@@ -5,7 +5,6 @@ package com.luca.blackjack.report;
  * perspective.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  * 
  */

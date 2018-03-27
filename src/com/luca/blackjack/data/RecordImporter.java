@@ -19,7 +19,6 @@ import javax.xml.stream.events.XMLEvent;
  * context. Root element content other than direct sub-elements is ignored.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public abstract class RecordImporter implements Importer {

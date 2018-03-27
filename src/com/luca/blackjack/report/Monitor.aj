@@ -23,7 +23,6 @@ import com.luca.blackjack.user.User;
  * object.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public aspect Monitor {

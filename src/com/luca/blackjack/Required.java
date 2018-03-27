@@ -7,7 +7,6 @@ import java.lang.annotation.RetentionPolicy;
  * Input validators used by AspectJ Checker class.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 @Retention(RetentionPolicy.RUNTIME)

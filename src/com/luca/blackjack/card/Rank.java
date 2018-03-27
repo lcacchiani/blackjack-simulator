@@ -6,7 +6,6 @@ import com.luca.blackjack.NoLog;
  * Cards are divided in ranks.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public enum Rank {

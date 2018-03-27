@@ -16,7 +16,6 @@ import com.luca.blackjack.game.Rules;
  * log4j log settings.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public aspect ServiceLogger {

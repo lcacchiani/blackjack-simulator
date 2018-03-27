@@ -6,7 +6,6 @@ import java.util.Calendar;
  * Records are events that occur during the game.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  * 
  */

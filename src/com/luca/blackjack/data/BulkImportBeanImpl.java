@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
  * the Sprint application-context.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public class BulkImportBeanImpl implements BulkImportBean {

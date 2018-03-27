@@ -9,7 +9,6 @@ import com.luca.blackjack.card.Rank;
  * This class provides the implementation of some common methods.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public abstract class UserUtils implements Comparable<User> {

@@ -11,7 +11,6 @@ import com.luca.blackjack.user.Dealer;
  * Implementation of {@link Hand} used by {@link Dealer}s.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  * @see Hand
  * @see HandUtils

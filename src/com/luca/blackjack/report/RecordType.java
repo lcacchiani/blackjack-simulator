@@ -6,7 +6,6 @@ import com.luca.blackjack.NoLog;
  * This represents all the possible record types.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public enum RecordType {

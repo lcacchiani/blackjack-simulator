@@ -18,7 +18,6 @@ import com.luca.blackjack.strategy.insurance.InsuranceStrategy;
  * different strategies to play blackjack.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public interface Player extends User {

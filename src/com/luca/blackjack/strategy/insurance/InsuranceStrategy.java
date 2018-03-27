@@ -10,7 +10,6 @@ import com.luca.blackjack.user.Player;
  * {@link Dealer}'s blackjack.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public interface InsuranceStrategy {

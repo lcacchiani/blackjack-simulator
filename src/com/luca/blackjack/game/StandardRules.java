@@ -13,7 +13,6 @@ import com.luca.blackjack.NoLog;
  * to prevent rules to collide each other.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  * @see Rules
  */

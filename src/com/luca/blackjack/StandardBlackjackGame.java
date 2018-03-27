@@ -15,7 +15,6 @@ import com.luca.blackjack.game.Table;
  * Blackjack game class
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 

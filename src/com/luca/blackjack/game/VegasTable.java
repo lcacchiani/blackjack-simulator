@@ -21,7 +21,6 @@ import com.luca.blackjack.user.Player;
  * A classic Vegas blackjack table.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  * @see Table
  */

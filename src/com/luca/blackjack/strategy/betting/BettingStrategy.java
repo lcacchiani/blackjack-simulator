@@ -10,7 +10,6 @@ import com.luca.blackjack.user.Player;
  * achieved by the player in this game.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public interface BettingStrategy {

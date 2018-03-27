@@ -29,7 +29,6 @@ import com.luca.blackjack.strategy.insurance.InsuranceStrategy;
  * A simple player that implements its own strategy game.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 

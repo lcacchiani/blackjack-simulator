@@ -11,7 +11,6 @@ import com.luca.blackjack.user.Player;
  * convenient.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  * @see Hand
  */

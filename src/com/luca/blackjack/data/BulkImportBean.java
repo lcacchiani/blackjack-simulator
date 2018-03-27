@@ -6,7 +6,6 @@ import java.io.Reader;
  * Methods for handling bulk imports.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public interface BulkImportBean {

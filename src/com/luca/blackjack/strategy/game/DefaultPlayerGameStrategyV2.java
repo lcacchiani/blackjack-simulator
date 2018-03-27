@@ -19,7 +19,6 @@ import com.luca.blackjack.game.Rules;
  * stands.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 

@@ -35,7 +35,6 @@ package com.luca.blackjack.game;
  * </ul>
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public interface Rules {

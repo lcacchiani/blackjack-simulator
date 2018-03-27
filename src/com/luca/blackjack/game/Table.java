@@ -12,7 +12,6 @@ import com.luca.blackjack.user.Player;
  * and maximum bet and a name - usually the casino name.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public interface Table {

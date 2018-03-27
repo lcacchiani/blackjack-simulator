@@ -8,7 +8,6 @@ import com.luca.blackjack.user.Player;
  * the {@link Player}s and regenerate the deck whenever a burn card is found.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public interface Deck {

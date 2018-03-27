@@ -17,7 +17,6 @@ import com.luca.blackjack.user.Player;
  * <i>busted</i>.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public interface Hand {

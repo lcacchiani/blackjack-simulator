@@ -22,7 +22,6 @@ import com.luca.blackjack.NoLog;
  * changing the algorithm.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 

@@ -12,7 +12,6 @@ import javax.xml.stream.XMLStreamException;
  * it is intended that {@link Importer}s are Spring-managed beans.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public interface Importer {

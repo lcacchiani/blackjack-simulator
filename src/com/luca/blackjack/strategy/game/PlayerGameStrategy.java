@@ -14,7 +14,6 @@ import com.luca.blackjack.user.Player;
  * the current rules.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public interface PlayerGameStrategy {

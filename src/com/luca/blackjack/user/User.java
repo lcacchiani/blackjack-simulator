@@ -12,7 +12,6 @@ import com.luca.blackjack.strategy.game.Move;
  * last results is maintained in a stack. Users are comparable each others.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public interface User {

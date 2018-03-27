@@ -10,7 +10,6 @@ import com.luca.blackjack.Required.Requirement;
  * implementations.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  * @see Hand
  */

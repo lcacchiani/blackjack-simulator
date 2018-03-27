@@ -26,7 +26,6 @@ import com.luca.blackjack.user.Player;
  * Standard report.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 

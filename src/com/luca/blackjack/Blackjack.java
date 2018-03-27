@@ -8,7 +8,6 @@ import com.luca.blackjack.game.Table;
  * Blackjack main wrapper interface.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 public interface Blackjack {

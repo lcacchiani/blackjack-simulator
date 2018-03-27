@@ -11,7 +11,6 @@ import com.luca.blackjack.NoLog;
  * Basic player report.
  * 
  * @author Luca
- * @version %I%, %G%
  * @since 1.0
  */
 
