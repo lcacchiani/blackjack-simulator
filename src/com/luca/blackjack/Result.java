@@ -10,13 +10,13 @@ package com.luca.blackjack;
 public enum Result {
 	PUSH("Push"), //
 	WON_BLACKJACK("Blackjack"), //
-	LOST_LOWER_SCORE("Lost"), //
-	WON_DEALER_BUSTED_OUT("Won"), //
-	WON_HIGHER_SCORE("Won"), //
-	LOST_BUSTED_OUT("Lost"), //
-	LOST_DEALER_BLACKJACK("Lost"), //
+	LOST_LOWER_SCORE("Lose"), //
+	WON_DEALER_BUSTED_OUT("Win"), //
+	WON_HIGHER_SCORE("Win"), //
+	LOST_BUSTED_OUT("Lose"), //
+	LOST_DEALER_BLACKJACK("Lose"), //
 	STANDOFF ("Standoff"), //
-	SURRENDERED ("Surrendered");
+	SURRENDERED ("Surrender");
 
 	private String description;
 

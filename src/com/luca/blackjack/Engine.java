@@ -64,6 +64,8 @@ public class Engine {
 		String gameFile = resources.getProperty("simulation.game.file");
 		InputStream in = new FileInputStream(gameFile);
 		Reader reader = new InputStreamReader(in, "UTF-8");
+		
+		logger.info("Simulation file: " + gameFile);
 
 		BulkImportBean bulkImportBean = (BulkImportBean) context
 				.getBean("bulkImportBean");
@@ -72,10 +74,15 @@ public class Engine {
 		@SuppressWarnings("unchecked")
 		List<Blackjack> games = (List<Blackjack>) bulkImportBean
 				.getImportedData();
-
+		
 		// let the simulation begin!
 		for (Blackjack game : games) {
+			
+			logger.info("Game version: " + game.getVersion());
+			
 			for (Table table : game.getTables()) {
+				
+				logger.info("Table name: " + table.getName());
 				
 				// initialise the report
 				Report report = (Report) context.getBean("report");
@@ -89,10 +96,14 @@ public class Engine {
 
 				for (int i = 0; i < cycles; i++) {
 					
+					logger.info("Cycle no.: " + i);
+					
 					// top up functionality
 					for (Player player : table.getPlayers())
-						if (player.getBalance() <= table.getMinimumBet())
+						if (player.getBalance() <= table.getMinimumBet()) {
 							player.balanceTopUp(topUp);
+							logger.info(player.getName() + " topped up " + topUp);
+						}
 
 					table.playGame();
 										
