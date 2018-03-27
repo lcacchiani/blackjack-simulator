@@ -94,19 +94,9 @@ public class Engine {
 				
 				table.initialise();
 
-				for (int i = 0; i < cycles; i++) {
-					
+				for (int i = 0; i < cycles; i++) {	
 					logger.info("Cycle no.: " + i);
-					
-					// top up functionality
-					for (Player player : table.getPlayers())
-						if (player.getBalance() <= table.getMinimumBet()) {
-							player.balanceTopUp(topUp);
-							logger.info(player.getName() + " topped up " + topUp);
-						}
-
-					table.playGame();
-										
+					table.playGame();					
 					flushRecordStack(report);
 				}
 				
