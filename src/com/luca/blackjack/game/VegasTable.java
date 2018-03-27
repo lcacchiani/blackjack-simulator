@@ -246,11 +246,18 @@ public class VegasTable extends GenericTable implements Comparable<Table> {
 		// the assumption here is that all the players able to place a bet are
 		// going to play. If a player can't place a bet (typically because of
 		// lack of funds), he/she is not going to play anymore.
+		List<Player> bustedPlayers = null;
 		for (Player player : players) {
 			player.bet(rules, minimumBet, maximumBet);
-			if (!player.hasActiveHand())
-				players.remove(player);
+			if (!player.hasActiveHand()) {
+				if (bustedPlayers == null)
+					bustedPlayers = new ArrayList<Player>();
+				bustedPlayers.add(player);
+			}
 		}
+		if (bustedPlayers != null)
+			for (Player player : bustedPlayers)
+				removePlayer(player);
 
 		if (players.size() < 1)
 			throw new IllegalStateException("At least one player required");

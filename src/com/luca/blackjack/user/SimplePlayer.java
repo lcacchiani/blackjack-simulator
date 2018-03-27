@@ -207,13 +207,15 @@ public class SimplePlayer extends GenericPlayer {
 	public double bet(Rules rules, double minimumBet, double maximumBet) {
 		if (rules == null)
 			throw new IllegalArgumentException("Rules must be provided");
+		if (balance < minimumBet) {
+			hand.setStatus(Status.CLOSED);
+			return 0;
+		}
 		double bet = bettingStrategy.getNextBet(balance, lastResults.peek(),
 				rules);
-		if (bet < minimumBet) {
-			if (balance < minimumBet)
-				hand.setStatus(Status.CLOSED);
+		if (bet < minimumBet)
 			bet = minimumBet;
-		} else if (bet > maximumBet)
+		else if (bet > maximumBet)
 			bet = maximumBet;
 		this.balance -= bet;
 		hand.setBet(bet);
