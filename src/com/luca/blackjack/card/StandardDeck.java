@@ -37,6 +37,9 @@ public class StandardDeck extends GenericDeck {
 								// warning
 	private Boolean burnCardFound; // this deck is running out of cards
 
+	private Random randomSeedGenerator; // generate random
+										// seeds from a seed
+
 	/**
 	 * Empty constructor to support JAXB object creation
 	 */
@@ -73,8 +76,7 @@ public class StandardDeck extends GenericDeck {
 	@XmlElement(name = "deck-no")
 	public void setDeckNo(int deckNo) {
 		if (deckNo <= 0)
-			throw new IllegalArgumentException(
-					"We should have at least one deck");
+			throw new IllegalArgumentException("We should have at least one deck");
 		this.deckNo = deckNo;
 	}
 
@@ -103,8 +105,8 @@ public class StandardDeck extends GenericDeck {
 	 */
 	public Card getCard() {
 		if (cards.isEmpty())
-			throw new IllegalStateException("The deck is empty, burnCardFound="
-					+ burnCardFound + ", burnCard=" + burnCard);
+			throw new IllegalStateException(
+					"The deck is empty, burnCardFound=" + burnCardFound + ", burnCard=" + burnCard);
 		if (cards.size() == burnCard)
 			burnCardFound = true;
 		return cards.remove(0);
@@ -118,6 +120,7 @@ public class StandardDeck extends GenericDeck {
 			throw new IllegalStateException("Deck not defined");
 		if (seed == null)
 			throw new IllegalStateException("Seed not defined");
+		randomSeedGenerator = new Random(seed);
 		cards = new ArrayList<Card>();
 		Random rnd = new Random(seed);
 		// for each set of cards, add all the 52 cards in the list of cards
@@ -133,14 +136,14 @@ public class StandardDeck extends GenericDeck {
 
 	/**
 	 * Regenerates the deck, using the same number of sets but a different seed.
-	 * The new seed is generated from the bitwise left-shifted old seed.
+	 * The new seed is generated using a {@link Random} generator.
 	 * 
 	 * @see com.luca.blackjack.card.Deck#regenerate()
 	 */
 	public void regenerate() {
 		if (seed == null)
 			throw new IllegalStateException("Seed not defined");
-		seed = seed << 2 + 1;
+		seed = randomSeedGenerator.nextInt(Integer.MAX_VALUE);
 		initialise();
 	}
 
@@ -154,8 +157,7 @@ public class StandardDeck extends GenericDeck {
 	@Override
 	@NoLog
 	public String toString() {
-		return "StandardDeck [deckNo=" + deckNo + ", seed=" + seed + ", cards="
-				+ cards + ", burnCard=" + burnCard + ", burnCardFound="
-				+ burnCardFound + "]";
+		return "StandardDeck [deckNo=" + deckNo + ", seed=" + seed + ", cards=" + cards + ", burnCard=" + burnCard
+				+ ", burnCardFound=" + burnCardFound + "]";
 	}
 }
